@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAN Card AI Vision Reader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+  <div class="hero-copy">
+    <p class="eyebrow">Vision AI PAN Reader</p>
+    <h1>Extract details from your PAN smoothly.</h1>
+    <p class="intro">
+      Upload a PAN card PDF and this app will use blazing-fast Multimodal AI to instantly extract
+      details like the PAN number, holder name, date of birth, and father's name.
+    </p>
+    <ul class="feature-list">
+      <li>Supports multi-page PDFs</li>
+      <li>Powered by Vision LLM</li>
+      <li>Instant accurate extraction</li>
+    </ul>
+  </div>
+
+  <main class="page-shell container">
+    <div class="content-split">
+      <div class="upload-section">
+        <div class="upload-card">
+          <div class="card-top">
+            <span class="status-dot"></span>
+            <p>Ready for upload</p>
+          </div>
+
+          <form id="uploadForm" class="upload-form">
+            <label for="panFile" class="upload-dropzone" id="dropzone">
+              <input
+                id="panFile"
+                name="panFile"
+                type="file"
+                accept=".pdf,application/pdf"
+                hidden
+                required
+              >
+              <span class="upload-icon">+</span>
+              <strong>Choose PAN card PDF</strong>
+              <span>Drag and drop or click to browse</span>
+              <small>Max file size: 5 MB</small>
+            </label>
+
+            <div id="fileMeta" class="file-meta hidden" aria-live="polite"></div> 
+            <div id="previewContainer" class="preview-container hidden"></div>    
+
+            <div id="progressContainer" class="progress-wrap hidden">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <p class="progress-text" id="progressText">Processing OCR...</p>    
+            </div>
+
+            <p id="message" class="message" aria-live="polite"></p>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Read PAN Card PDF</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="results-wrapper-container" style="display: flex; flex-direction: column; width: 100%;">
+          <div id="resultsContainer" class="results-wrapper" aria-live="polite"></div>
+          <button id="downloadCsvBtn" class="submit-btn hidden" style="margin-top: 24px; padding: 10px 24px; background: linear-gradient(135deg, #157347, #198754); box-shadow: 0 8px 20px -6px #157347;">&darr; Download CSV</button>      
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js?v=11"></script>
+</body>
+</html>
